@@ -1,0 +1,685 @@
+{
+  "cases": 251734,
+  "categories": {
+    "3-way match, invoice before GR": 221010,
+    "3-way match, invoice after GR": 15182,
+    "Consignment": 14498,
+    "2-way match": 1044
+  },
+  "controls": [
+    {
+      "id": "C1a",
+      "name": "Invoice posted before goods receipt",
+      "risk": "Paying for goods or services not (yet) received; three-way match bypassed.",
+      "definition": "First 'Record Invoice Receipt' earlier than the first goods receipt / service entry sheet, on items where invoice verification is GR-based.",
+      "scope": [
+        "3-way match, invoice after GR"
+      ],
+      "population": 11128,
+      "flagged": 0,
+      "rate": 0.0,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 11128,
+          "flagged": 0
+        }
+      },
+      "extra": {},
+      "examples": []
+    },
+    {
+      "id": "C1b",
+      "name": "Invoice without any receipt",
+      "risk": "Items with GR-based verification were invoiced without any receipt.",
+      "definition": "An invoice receipt exists, no goods receipt / service entry sheet.",
+      "scope": [
+        "3-way match, invoice after GR"
+      ],
+      "population": 11128,
+      "flagged": 0,
+      "rate": 0.0,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 11128,
+          "flagged": 0
+        }
+      },
+      "extra": {},
+      "examples": []
+    },
+    {
+      "id": "C1c",
+      "name": "Payment before invoice receipt",
+      "risk": "Payment released before the supplier invoice was verified.",
+      "definition": "First 'Clear Invoice' earlier than first 'Record Invoice Receipt'.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match"
+      ],
+      "population": 183293,
+      "flagged": 24,
+      "rate": 0.00013093789724648514,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 9674,
+          "flagged": 7
+        },
+        "3-way match, invoice before GR": {
+          "population": 173316,
+          "flagged": 17
+        },
+        "2-way match": {
+          "population": 303,
+          "flagged": 0
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4507016022_00020",
+          "detail": "payment 210.0 days before invoice receipt"
+        },
+        {
+          "case_id": "4507005362_00010",
+          "detail": "payment 196.1 days before invoice receipt"
+        },
+        {
+          "case_id": "4507005362_00050",
+          "detail": "payment 196.1 days before invoice receipt"
+        },
+        {
+          "case_id": "4507026370_00010",
+          "detail": "payment 168.0 days before invoice receipt"
+        },
+        {
+          "case_id": "4507022027_00030",
+          "detail": "payment 159.5 days before invoice receipt"
+        }
+      ]
+    },
+    {
+      "id": "C1d",
+      "name": "Payment without any invoice receipt",
+      "risk": "Payment with no supporting invoice document in the process.",
+      "definition": "Case has 'Clear Invoice' but no 'Record Invoice Receipt'.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match"
+      ],
+      "population": 183677,
+      "flagged": 384,
+      "rate": 0.002090626480179881,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 9676,
+          "flagged": 2
+        },
+        "3-way match, invoice before GR": {
+          "population": 173698,
+          "flagged": 382
+        },
+        "2-way match": {
+          "population": 303,
+          "flagged": 0
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4507002401_00010",
+          "detail": "payment cleared, no invoice receipt in the log"
+        },
+        {
+          "case_id": "4507002729_00010",
+          "detail": "payment cleared, no invoice receipt in the log"
+        },
+        {
+          "case_id": "4507003909_00010",
+          "detail": "payment cleared, no invoice receipt in the log"
+        },
+        {
+          "case_id": "4507003909_00020",
+          "detail": "payment cleared, no invoice receipt in the log"
+        },
+        {
+          "case_id": "4507005218_00010",
+          "detail": "payment cleared, no invoice receipt in the log"
+        }
+      ]
+    },
+    {
+      "id": "C1e",
+      "name": "Invoice before goods receipt, where configuration allows it",
+      "risk": "Permitted by configuration; accepted risk of invoicing before receipt, for scale.",
+      "definition": "Item category 'invoice before GR'; invoice receipt earlier than the first receipt.",
+      "scope": [
+        "3-way match, invoice before GR"
+      ],
+      "population": 199242,
+      "flagged": 16356,
+      "rate": 0.08209112536513385,
+      "by_category": {
+        "3-way match, invoice before GR": {
+          "population": 199242,
+          "flagged": 16356
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4507017560_00020",
+          "detail": "invoice 202.8 days before goods receipt"
+        },
+        {
+          "case_id": "4507017560_00010",
+          "detail": "invoice 202.8 days before goods receipt"
+        },
+        {
+          "case_id": "4507030019_00110",
+          "detail": "invoice 138.3 days before goods receipt"
+        },
+        {
+          "case_id": "4507014015_00010",
+          "detail": "invoice 136.0 days before goods receipt"
+        },
+        {
+          "case_id": "4507025567_00010",
+          "detail": "invoice 130.8 days before goods receipt"
+        }
+      ]
+    },
+    {
+      "id": "C1f",
+      "name": "Payment without any receipt",
+      "risk": "Paid with no goods receipt or service entry sheet on a three-way-match item.",
+      "definition": "Item category 'invoice before GR'; 'Clear Invoice' exists, no receipt event.",
+      "scope": [
+        "3-way match, invoice before GR"
+      ],
+      "population": 173698,
+      "flagged": 565,
+      "rate": 0.003252772052643093,
+      "by_category": {
+        "3-way match, invoice before GR": {
+          "population": 173698,
+          "flagged": 565
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4507001238_00140",
+          "detail": "payment cleared, no goods receipt in the log"
+        },
+        {
+          "case_id": "4507002186_00010",
+          "detail": "payment cleared, no goods receipt in the log"
+        },
+        {
+          "case_id": "4507002401_00010",
+          "detail": "payment cleared, no goods receipt in the log"
+        },
+        {
+          "case_id": "4507002729_00010",
+          "detail": "payment cleared, no goods receipt in the log"
+        },
+        {
+          "case_id": "4507003075_00180",
+          "detail": "payment cleared, no goods receipt in the log"
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "Maverick buying (PO created after the invoice)",
+      "risk": "Commitment made before authorisation; spend outside purchasing controls.",
+      "definition": "'Create Purchase Order Item' on a later calendar day than the earliest invoice event.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match"
+      ],
+      "population": 211391,
+      "flagged": 3621,
+      "rate": 0.017129395291190258,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 11129,
+          "flagged": 347
+        },
+        "3-way match, invoice before GR": {
+          "population": 199575,
+          "flagged": 2669
+        },
+        "2-way match": {
+          "population": 687,
+          "flagged": 605
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4508076155_00010",
+          "detail": "PO created 539.0 days after the invoice"
+        },
+        {
+          "case_id": "4507075969_00020",
+          "detail": "PO created 417.0 days after the invoice"
+        },
+        {
+          "case_id": "4507075976_00010",
+          "detail": "PO created 369.0 days after the invoice"
+        },
+        {
+          "case_id": "4507000846_00020",
+          "detail": "PO created 364.0 days after the invoice"
+        },
+        {
+          "case_id": "4507000846_00060",
+          "detail": "PO created 364.0 days after the invoice"
+        }
+      ]
+    },
+    {
+      "id": "C3a",
+      "name": "Same user creates and approves the purchase order",
+      "risk": "Self-approval of own commitments.",
+      "definition": "Same named user (batch jobs and NONE excluded) on Create Purchase Order Item and Change Approval for Purchase Order / Release Purchase Order in one case.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match",
+        "Consignment"
+      ],
+      "population": 4200,
+      "flagged": 1972,
+      "rate": 0.4695238095238095,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 40,
+          "flagged": 18
+        },
+        "3-way match, invoice before GR": {
+          "population": 3116,
+          "flagged": 1503
+        },
+        "2-way match": {
+          "population": 1044,
+          "flagged": 451
+        },
+        "Consignment": {
+          "population": 0,
+          "flagged": 0
+        }
+      },
+      "extra": {
+        "all_users": {
+          "population": 4378,
+          "flagged": 1972,
+          "rate": 0.45043398812243035,
+          "flagged_only_system_users": 0
+        }
+      },
+      "examples": [
+        {
+          "case_id": "4507000421_00010",
+          "detail": "user user_091 performed both steps"
+        },
+        {
+          "case_id": "4507000422_00010",
+          "detail": "user user_091 performed both steps"
+        },
+        {
+          "case_id": "4507000658_00010",
+          "detail": "user user_142 performed both steps"
+        },
+        {
+          "case_id": "4507002181_00010",
+          "detail": "user user_064 performed both steps"
+        },
+        {
+          "case_id": "4507002181_00020",
+          "detail": "user user_064 performed both steps"
+        }
+      ]
+    },
+    {
+      "id": "C3b",
+      "name": "Same user creates the PO and clears the invoice",
+      "risk": "One person controls order-to-pay; fictitious-purchase risk.",
+      "definition": "Same named user (batch jobs and NONE excluded) on Create Purchase Order Item and Clear Invoice in one case.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match",
+        "Consignment"
+      ],
+      "population": 164837,
+      "flagged": 0,
+      "rate": 0.0,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 8364,
+          "flagged": 0
+        },
+        "3-way match, invoice before GR": {
+          "population": 156171,
+          "flagged": 0
+        },
+        "2-way match": {
+          "population": 302,
+          "flagged": 0
+        },
+        "Consignment": {
+          "population": 0,
+          "flagged": 0
+        }
+      },
+      "extra": {
+        "all_users": {
+          "population": 183677,
+          "flagged": 0,
+          "rate": 0.0,
+          "flagged_only_system_users": 0
+        }
+      },
+      "examples": []
+    },
+    {
+      "id": "C3c",
+      "name": "Same user records goods receipt and invoice",
+      "risk": "Receipt and invoice verification not independent; weakens three-way match.",
+      "definition": "Same named user (batch jobs and NONE excluded) on Record Goods Receipt / Record Service Entry Sheet and Record Invoice Receipt in one case.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR"
+      ],
+      "population": 171829,
+      "flagged": 0,
+      "rate": 0.0,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 6463,
+          "flagged": 0
+        },
+        "3-way match, invoice before GR": {
+          "population": 165366,
+          "flagged": 0
+        }
+      },
+      "extra": {
+        "all_users": {
+          "population": 210370,
+          "flagged": 0,
+          "rate": 0.0,
+          "flagged_only_system_users": 0
+        }
+      },
+      "examples": []
+    },
+    {
+      "id": "C4a",
+      "name": "Price or quantity changed after approval",
+      "risk": "Approved terms altered without re-approval; value manipulation after commitment.",
+      "definition": "A 'Change Price' / 'Change Quantity' event later than the first approval event.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match",
+        "Consignment"
+      ],
+      "population": 4378,
+      "flagged": 917,
+      "rate": 0.2094563727729557,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 40,
+          "flagged": 9
+        },
+        "3-way match, invoice before GR": {
+          "population": 3294,
+          "flagged": 899
+        },
+        "2-way match": {
+          "population": 1044,
+          "flagged": 9
+        },
+        "Consignment": {
+          "population": 0,
+          "flagged": 0
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4507017109_00670",
+          "detail": "1 change(s), last 241.2 days after approval"
+        },
+        {
+          "case_id": "4507017109_00080",
+          "detail": "1 change(s), last 233.0 days after approval"
+        },
+        {
+          "case_id": "4507017109_00020",
+          "detail": "1 change(s), last 231.9 days after approval"
+        },
+        {
+          "case_id": "4507017109_00900",
+          "detail": "1 change(s), last 219.2 days after approval"
+        },
+        {
+          "case_id": "4507017109_00470",
+          "detail": "2 change(s), last 218.5 days after approval"
+        }
+      ]
+    },
+    {
+      "id": "C4b",
+      "name": "Price or quantity changed after goods receipt",
+      "risk": "Approved terms altered without re-approval; value manipulation after commitment.",
+      "definition": "A 'Change Price' / 'Change Quantity' event later than the first goods receipt event.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match",
+        "Consignment"
+      ],
+      "population": 234480,
+      "flagged": 5768,
+      "rate": 0.024599112930740363,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 14540,
+          "flagged": 516
+        },
+        "3-way match, invoice before GR": {
+          "population": 206474,
+          "flagged": 4993
+        },
+        "2-way match": {
+          "population": 0,
+          "flagged": 0
+        },
+        "Consignment": {
+          "population": 13466,
+          "flagged": 259
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4507000430_00010",
+          "detail": "1 change(s), last 369.9 days after goods receipt"
+        },
+        {
+          "case_id": "4507000430_00020",
+          "detail": "1 change(s), last 362.1 days after goods receipt"
+        },
+        {
+          "case_id": "4507000444_00010",
+          "detail": "2 change(s), last 361.8 days after goods receipt"
+        },
+        {
+          "case_id": "4507000436_00010",
+          "detail": "1 change(s), last 361.8 days after goods receipt"
+        },
+        {
+          "case_id": "4507000440_00010",
+          "detail": "1 change(s), last 361.8 days after goods receipt"
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "name": "Payment later than the usual days-to-pay plus 14 days",
+      "risk": "Late-payment interest, lost discounts and supplier-relationship risk.",
+      "definition": "First 'Clear Invoice' later than first 'Record Invoice Receipt' by more than the median invoice-to-payment time of the item's vendor (company if the vendor has fewer than 30 paid items) plus 14 days. The log has no contractual terms.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match"
+      ],
+      "population": 183269,
+      "flagged": 30792,
+      "rate": 0.16801532174017428,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 9667,
+          "flagged": 1678
+        },
+        "3-way match, invoice before GR": {
+          "population": 173299,
+          "flagged": 29066
+        },
+        "2-way match": {
+          "population": 303,
+          "flagged": 48
+        }
+      },
+      "extra": {
+        "grace_days": 14,
+        "min_vendor_items": 30,
+        "vendors_with_own_proxy": 471,
+        "items_on_vendor_proxy": 175300,
+        "items_on_company_proxy": 7969,
+        "proxy_days_p10_p50_p90": [
+          17.261805555555554,
+          42.076388888888886,
+          91.71527777777777
+        ]
+      },
+      "examples": [
+        {
+          "case_id": "4507000926_00050",
+          "detail": "paid 282 days after invoice receipt, usual for this vendor 23 days"
+        },
+        {
+          "case_id": "4507000926_00030",
+          "detail": "paid 282 days after invoice receipt, usual for this vendor 23 days"
+        },
+        {
+          "case_id": "4507000926_00060",
+          "detail": "paid 282 days after invoice receipt, usual for this vendor 23 days"
+        },
+        {
+          "case_id": "4507000926_00020",
+          "detail": "paid 282 days after invoice receipt, usual for this vendor 23 days"
+        },
+        {
+          "case_id": "4507000926_00040",
+          "detail": "paid 282 days after invoice receipt, usual for this vendor 23 days"
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "name": "Approvals outside business hours",
+      "risk": "Approval by credentials outside normal working pattern; possible shared or misused ID.",
+      "definition": "Named-user approval event before 07:00, from 19:00, or on a weekend.",
+      "scope": [
+        "3-way match, invoice after GR",
+        "3-way match, invoice before GR",
+        "2-way match",
+        "Consignment"
+      ],
+      "population": 4378,
+      "flagged": 192,
+      "rate": 0.0438556418455916,
+      "by_category": {
+        "3-way match, invoice after GR": {
+          "population": 40,
+          "flagged": 8
+        },
+        "3-way match, invoice before GR": {
+          "population": 3294,
+          "flagged": 172
+        },
+        "2-way match": {
+          "population": 1044,
+          "flagged": 12
+        },
+        "Consignment": {
+          "population": 0,
+          "flagged": 0
+        }
+      },
+      "extra": {},
+      "examples": [
+        {
+          "case_id": "4507008905_00010",
+          "detail": "user_316 at Wed 2018-02-14 19:15"
+        },
+        {
+          "case_id": "4507008905_00020",
+          "detail": "user_316 at Wed 2018-02-14 19:15"
+        },
+        {
+          "case_id": "4507008905_00030",
+          "detail": "user_316 at Wed 2018-02-14 19:15"
+        },
+        {
+          "case_id": "4507008905_00040",
+          "detail": "user_316 at Wed 2018-02-14 19:15"
+        },
+        {
+          "case_id": "4507008905_00050",
+          "detail": "user_316 at Wed 2018-02-14 19:15"
+        }
+      ]
+    }
+  ],
+  "late_payment_sensitivity": [
+    {
+      "grace_days": 0,
+      "flagged": 89183,
+      "population": 183269,
+      "rate": 0.4866234878784737
+    },
+    {
+      "grace_days": 7,
+      "flagged": 54708,
+      "population": 183269,
+      "rate": 0.2985120233099979
+    },
+    {
+      "grace_days": 14,
+      "flagged": 30792,
+      "population": 183269,
+      "rate": 0.16801532174017428
+    },
+    {
+      "grace_days": 30,
+      "flagged": 7016,
+      "population": 183269,
+      "rate": 0.03828252459499425
+    },
+    {
+      "grace_days": 60,
+      "flagged": 1720,
+      "population": 183269,
+      "rate": 0.009385111502763697
+    }
+  ]
+}

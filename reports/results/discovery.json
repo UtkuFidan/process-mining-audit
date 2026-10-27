@@ -1,0 +1,167 @@
+{
+  "events": 1595828,
+  "sample": null,
+  "variants": {
+    "cases": 251734,
+    "variants": 13878,
+    "top1_share": 0.19974258542747503,
+    "top10_share": 0.5893125283036856,
+    "variants_for_80pct": 48,
+    "singleton_variants": 10937,
+    "singleton_share_of_variants": 0.7880818561752414,
+    "tail_cases_outside_top10": 103384
+  },
+  "top_variants": [
+    {
+      "rank": 1,
+      "cases": 50282,
+      "share": 0.19974258542747503,
+      "variant": "Create Purchase Order Item > Vendor creates invoice > Record Goods Receipt > Record Invoice Receipt > Clear Invoice"
+    },
+    {
+      "rank": 2,
+      "cases": 30795,
+      "share": 0.12233150865596225,
+      "variant": "Create Purchase Order Item > Record Goods Receipt > Vendor creates invoice > Record Invoice Receipt > Clear Invoice"
+    },
+    {
+      "rank": 3,
+      "cases": 12162,
+      "share": 0.048312901713713684,
+      "variant": "Create Purchase Order Item > Record Goods Receipt"
+    },
+    {
+      "rank": 4,
+      "cases": 11381,
+      "share": 0.045210420523250736,
+      "variant": "Create Purchase Order Item > Vendor creates invoice > Record Goods Receipt > Record Invoice Receipt > Remove Payment Block > Clear Invoice"
+    },
+    {
+      "rank": 5,
+      "cases": 8921,
+      "share": 0.03543820064035847,
+      "variant": "Create Purchase Requisition Item > Create Purchase Order Item > Vendor creates invoice > Record Goods Receipt > Record Invoice Receipt > Clear Invoice"
+    },
+    {
+      "rank": 6,
+      "cases": 8836,
+      "share": 0.035100542636274795,
+      "variant": "Create Purchase Order Item > Vendor creates invoice > Record Invoice Receipt > Record Goods Receipt > Remove Payment Block > Clear Invoice"
+    },
+    {
+      "rank": 7,
+      "cases": 8512,
+      "share": 0.03381346977364996,
+      "variant": "Create Purchase Order Item > Receive Order Confirmation > Record Goods Receipt > Vendor creates invoice > Record Invoice Receipt > Clear Invoice"
+    },
+    {
+      "rank": 8,
+      "cases": 7984,
+      "share": 0.03171601770122431,
+      "variant": "Create Purchase Order Item > Record Goods Receipt > Vendor creates invoice > Record Invoice Receipt > Remove Payment Block > Clear Invoice"
+    },
+    {
+      "rank": 9,
+      "cases": 5266,
+      "share": 0.020918906464760422,
+      "variant": "Create Purchase Order Item > Delete Purchase Order Item"
+    },
+    {
+      "rank": 10,
+      "cases": 4211,
+      "share": 0.016727974767015978,
+      "variant": "Create Purchase Order Item > Receive Order Confirmation > Vendor creates invoice > Record Goods Receipt > Record Invoice Receipt > Clear Invoice"
+    }
+  ],
+  "throughput": {
+    "median_days": 64.04861111111111,
+    "p90_days": 126.10694444444445,
+    "p95_days": 142.1888541666664,
+    "p99_days": 217.84397916666555,
+    "mean_days": 69.61123378800197,
+    "share_over_90_days": 0.3040908260306514
+  },
+  "segments": [
+    {
+      "from": "Create Purchase Order Item",
+      "to": "Record Goods Receipt",
+      "cases": 234479,
+      "median_days": 10.015972222222222,
+      "p90_days": 34.11527777777778,
+      "negative_share": 0.0
+    },
+    {
+      "from": "Record Goods Receipt",
+      "to": "Record Invoice Receipt",
+      "cases": 210370,
+      "median_days": 9.136805555555556,
+      "p90_days": 45.89770833333336,
+      "negative_share": 0.07774872843085992
+    },
+    {
+      "from": "Record Invoice Receipt",
+      "to": "Clear Invoice",
+      "cases": 183293,
+      "median_days": 42.05763888888889,
+      "p90_days": 97.12361111111112,
+      "negative_share": 0.00013093789724648514
+    },
+    {
+      "from": "Create Purchase Order Item",
+      "to": "Clear Invoice",
+      "cases": 183677,
+      "median_days": 76.99513888888889,
+      "p90_days": 126.18055555555556,
+      "negative_share": 0.0
+    }
+  ],
+  "activities": {
+    "Record Goods Receipt": 314097,
+    "Create Purchase Order Item": 251734,
+    "Record Invoice Receipt": 228760,
+    "Vendor creates invoice": 219842,
+    "Clear Invoice": 194393,
+    "Record Service Entry Sheet": 164975,
+    "Remove Payment Block": 57136,
+    "Create Purchase Requisition Item": 46592,
+    "Receive Order Confirmation": 32065,
+    "Change Quantity": 21449,
+    "Change Price": 12423,
+    "Delete Purchase Order Item": 8875,
+    "Change Approval for Purchase Order": 7541,
+    "Cancel Invoice Receipt": 7096,
+    "Vendor creates debit memo": 6237,
+    "Change Delivery Indicator": 3289,
+    "Cancel Goods Receipt": 3096,
+    "SRM: In Transfer to Execution Syst.": 1765,
+    "SRM: Created": 1628,
+    "SRM: Complete": 1628,
+    "SRM: Awaiting Approval": 1628,
+    "SRM: Document Completed": 1628,
+    "SRM: Ordered": 1628,
+    "Release Purchase Order": 1610,
+    "SRM: Change was Transmitted": 1440,
+    "Reactivate Purchase Order Item": 543,
+    "Block Purchase Order Item": 514,
+    "Cancel Subsequent Invoice": 491,
+    "Release Purchase Requisition": 467,
+    "Change Storage Location": 415,
+    "Update Order Confirmation": 244,
+    "SRM: Deleted": 188,
+    "Record Subsequent Invoice": 167,
+    "Set Payment Block": 124,
+    "SRM: Transfer Failed (E.Sys.)": 45,
+    "Change Currency": 35,
+    "Change Final Invoice Indicator": 11,
+    "SRM: Transaction Completed": 8,
+    "Change payment term": 7,
+    "SRM: Incomplete": 6,
+    "SRM: Held": 6,
+    "Change Rejection Indicator": 2
+  },
+  "inductive_miner": {
+    "noise_threshold": 0.2,
+    "cases_used": 50000,
+    "tree": "+( 'Create Purchase Order Item', ->( X( tau, 'Change payment term' ), +( X( tau, 'Create Purchase Requisition Item' ), ->( X( tau, 'Release Purchase Requisition' ), +( X( tau, *( 'SRM: Created', tau ) ), ->( X( tau, ->( 'SRM: Incomplete', 'SRM: Held' ) ), +( X( tau, *( 'SRM: In Transfer to Execution Syst.', tau ) ), ->( *( X( 'Change Storage Location', 'Change Currency', 'Block Purchase Order Item', 'Reactivate Purchase Order Item', 'SRM: Change was Transmitted', 'Receive Order Confirmation', ->( X( 'Cancel Goods Receipt', 'Delete Purchase Order Item', 'Change Quantity', 'Change Delivery Indicator', 'Update Order Confirmation', ->( X( tau, 'Release Purchase Order' ), 'Change Approval for Purchase Order' ), ->( X( tau, *( 'Vendor creates debit memo', tau ) ), X( tau, 'SRM: Ordered', 'SRM: Awaiting Approval', 'SRM: Document Completed', 'SRM: Complete', 'Record Service Entry Sheet', 'Vendor creates invoice', 'Change Price' ), X( tau, 'Record Goods Receipt', 'Record Invoice Receipt' ) ) ), X( tau, +( *( 'Clear Invoice', tau ), X( tau, 'Set Payment Block', *( 'Cancel Invoice Receipt', tau ), +( X( tau, 'Record Subsequent Invoice' ), X( tau, *( 'Cancel Subsequent Invoice', tau ) ), *( 'Remove Payment Block', tau ) ) ) ) ) ) ), tau ), X( tau, 'SRM: Transfer Failed (E.Sys.)' ) ) ) ) ) ) ) ) )"
+  }
+}

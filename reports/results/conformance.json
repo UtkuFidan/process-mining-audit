@@ -1,0 +1,237 @@
+{
+  "categories": {
+    "3-way match, invoice after GR": {
+      "model": "->('Create Purchase Order Item', X('Change Approval for Purchase Order', 'Release Purchase Order', tau), X('Record Goods Receipt', 'Record Service Entry Sheet'), 'Record Invoice Receipt', 'Clear Invoice')",
+      "cases": 15182,
+      "projected_variants": 4038,
+      "token_replay": {
+        "weighted_trace_fitness": 0.7043122378419925,
+        "fit_cases": 6376,
+        "fit_share": 0.41997101831115796,
+        "variants": 4038
+      },
+      "alignments": {
+        "variants_aligned": 500,
+        "cases_covered": 11644,
+        "coverage_share": 0.7669608747200632,
+        "alignment_fitness": 0.8503523627393622,
+        "perfectly_aligned_cases": 6376,
+        "missing_step_cases": {
+          "Clear Invoice": 3309,
+          "Record Invoice Receipt": 1988,
+          "Goods receipt / service entry sheet": 705,
+          "Create Purchase Order Item": 243
+        },
+        "extra_step_cases": {
+          "Goods receipt / service entry sheet": 2524,
+          "Record Invoice Receipt": 841,
+          "Clear Invoice": 685,
+          "Create Purchase Order Item": 243
+        }
+      },
+      "top_projected_variants": [
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Invoice Receipt > Clear Invoice",
+          "cases": 6347,
+          "share": 0.4180608615465683
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Invoice Receipt",
+          "cases": 1079,
+          "share": 0.07107100513766303
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt",
+          "cases": 662,
+          "share": 0.04360426821235674
+        },
+        {
+          "variant": "Create Purchase Order Item",
+          "cases": 633,
+          "share": 0.04169411144776709
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Service Entry Sheet > Record Invoice Receipt > Clear Invoice",
+          "cases": 374,
+          "share": 0.024634435515742327
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Service Entry Sheet > Record Goods Receipt > Record Invoice Receipt > Clear Invoice",
+          "cases": 355,
+          "share": 0.023382953497562902
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Invoice Receipt > Clear Invoice > Record Invoice Receipt > Clear Invoice",
+          "cases": 165,
+          "share": 0.010868133315768674
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Service Entry Sheet",
+          "cases": 114,
+          "share": 0.007508892109076538
+        }
+      ]
+    },
+    "3-way match, invoice before GR": {
+      "model": "->('Create Purchase Order Item', X('Change Approval for Purchase Order', 'Release Purchase Order', tau), +(X('Record Goods Receipt', 'Record Service Entry Sheet'), 'Record Invoice Receipt'), 'Clear Invoice')",
+      "cases": 221010,
+      "projected_variants": 829,
+      "token_replay": {
+        "weighted_trace_fitness": 0.9219943633931067,
+        "fit_cases": 161226,
+        "fit_share": 0.7294964028776978,
+        "variants": 829
+      },
+      "alignments": {
+        "variants_aligned": 500,
+        "cases_covered": 220681,
+        "coverage_share": 0.9985113795755848,
+        "alignment_fitness": 0.9223386156161945,
+        "perfectly_aligned_cases": 161226,
+        "missing_step_cases": {
+          "Clear Invoice": 47260,
+          "Record Invoice Receipt": 21437,
+          "Goods receipt / service entry sheet": 14542,
+          "Create Purchase Order Item": 70
+        },
+        "extra_step_cases": {
+          "Record Invoice Receipt": 8057,
+          "Goods receipt / service entry sheet": 6832,
+          "Clear Invoice": 5619,
+          "Release Purchase Order": 929,
+          "Change Approval for Purchase Order": 406,
+          "Create Purchase Order Item": 70
+        }
+      },
+      "top_projected_variants": [
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Invoice Receipt > Clear Invoice",
+          "cases": 146546,
+          "share": 0.6630740690466495
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Invoice Receipt",
+          "cases": 23716,
+          "share": 0.10730736165784353
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Invoice Receipt > Record Goods Receipt > Clear Invoice",
+          "cases": 13602,
+          "share": 0.06154472648296457
+        },
+        {
+          "variant": "Create Purchase Order Item",
+          "cases": 12659,
+          "share": 0.05727795122392652
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt",
+          "cases": 6851,
+          "share": 0.030998597348536265
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Goods Receipt > Record Invoice Receipt > Clear Invoice",
+          "cases": 1569,
+          "share": 0.007099226279353875
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Goods Receipt > Record Invoice Receipt > Clear Invoice > Record Invoice Receipt > Clear Invoice",
+          "cases": 1380,
+          "share": 0.0062440613546898335
+        },
+        {
+          "variant": "Create Purchase Order Item > Record Invoice Receipt > Record Goods Receipt",
+          "cases": 1182,
+          "share": 0.005348174290756074
+        }
+      ]
+    },
+    "2-way match": {
+      "model": "->('Create Purchase Order Item', X('Change Approval for Purchase Order', 'Release Purchase Order', tau), +(X('Record Goods Receipt', 'Record Service Entry Sheet', tau), 'Record Invoice Receipt'), 'Clear Invoice')",
+      "cases": 1044,
+      "projected_variants": 127,
+      "token_replay": {
+        "weighted_trace_fitness": 0.64373625804697,
+        "fit_cases": 96,
+        "fit_share": 0.09195402298850575,
+        "variants": 127
+      },
+      "alignments": {
+        "variants_aligned": 127,
+        "cases_covered": 1044,
+        "coverage_share": 1.0,
+        "alignment_fitness": 0.6592816054288737,
+        "perfectly_aligned_cases": 96,
+        "missing_step_cases": {
+          "Clear Invoice": 741,
+          "Record Invoice Receipt": 357
+        },
+        "extra_step_cases": {
+          "Change Approval for Purchase Order": 471,
+          "Record Invoice Receipt": 8,
+          "Clear Invoice": 4
+        }
+      },
+      "top_projected_variants": [
+        {
+          "variant": "Create Purchase Order Item > Change Approval for Purchase Order > Record Invoice Receipt",
+          "cases": 243,
+          "share": 0.23275862068965517
+        },
+        {
+          "variant": "Create Purchase Order Item > Change Approval for Purchase Order",
+          "cases": 230,
+          "share": 0.22030651340996169
+        },
+        {
+          "variant": "Create Purchase Order Item > Change Approval for Purchase Order > Record Invoice Receipt > Clear Invoice",
+          "cases": 96,
+          "share": 0.09195402298850575
+        },
+        {
+          "variant": "Change Approval for Purchase Order > Change Approval for Purchase Order > Create Purchase Order Item > Change Approval for Purchase Order",
+          "cases": 50,
+          "share": 0.04789272030651341
+        },
+        {
+          "variant": "Change Approval for Purchase Order > Create Purchase Order Item > Change Approval for Purchase Order > Change Approval for Purchase Order",
+          "cases": 50,
+          "share": 0.04789272030651341
+        },
+        {
+          "variant": "Create Purchase Order Item > Change Approval for Purchase Order > Record Invoice Receipt > Clear Invoice > Change Approval for Purchase Order > Change Approval for Purchase Order",
+          "cases": 33,
+          "share": 0.031609195402298854
+        },
+        {
+          "variant": "Create Purchase Order Item > Change Approval for Purchase Order > Record Invoice Receipt > Change Approval for Purchase Order > Change Approval for Purchase Order",
+          "cases": 26,
+          "share": 0.02490421455938697
+        },
+        {
+          "variant": "Change Approval for Purchase Order > Create Purchase Order Item > Change Approval for Purchase Order > Change Approval for Purchase Order > Record Invoice Receipt",
+          "cases": 22,
+          "share": 0.0210727969348659
+        }
+      ]
+    }
+  },
+  "modelled_cases": 237236,
+  "not_modelled_cases": 14498,
+  "fit_cases": 167698,
+  "fit_share": 0.7068825979193715,
+  "events_outside_model": {
+    "Vendor creates invoice": 219842,
+    "Remove Payment Block": 57136,
+    "Create Purchase Requisition Item": 46592,
+    "Receive Order Confirmation": 32065,
+    "Change Quantity": 21449,
+    "Change Price": 12423,
+    "Delete Purchase Order Item": 8875,
+    "Cancel Invoice Receipt": 7096,
+    "Vendor creates debit memo": 6237,
+    "Change Delivery Indicator": 3289,
+    "Cancel Goods Receipt": 3096,
+    "SRM: In Transfer to Execution Syst.": 1765
+  }
+}
